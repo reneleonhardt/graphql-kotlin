@@ -13,6 +13,17 @@ dependencies {
     testImplementation(libs.reactor.core)
     testImplementation(libs.reactor.extensions)
     testImplementation(libs.junit.params)
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    constraints {
+        implementation("commons-codec:commons-codec") {
+            version {
+                strictly("[1.13, 2[")
+                prefer("1.16.0")
+            }
+            because("Cxeb68d52e-5509: Apache commons-codec before 1.13 is vulnerable to information exposure. https://devhub.checkmarx.com/cve-details/Cxeb68d52e-5509/")
+        }
+    }
 }
 
 tasks {

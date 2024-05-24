@@ -9,6 +9,8 @@ dependencies {
     api(libs.graphql.java)
     testImplementation(libs.reactor.core)
     testImplementation(libs.reactor.extensions)
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks {

@@ -22,18 +22,24 @@ dependencies {
     testImplementation(projects.graphqlKotlinClientJackson)
     testImplementation(projects.graphqlKotlinClientSerialization)
     testImplementation(libs.wiremock.lib)
-    testImplementation(libs.compile.testing) {
-        // there is no kotlin compile testing release supporting kotlin 1.8.22
-        // explicitly downgrading kotlin version to match project version
-        exclude(group = "org.jetbrains.kotlin", module = "kotlin-annotation-processing-embeddable")
-        exclude(group = "org.jetbrains.kotlin", module = "kotlin-compiler-embeddable")
-    }
+    testImplementation(libs.compile.testing)
     testImplementation(libs.icu)
     testImplementation(libs.junit.params)
     // compile testing workaround -> explicit dependencies for compiler/annotation-processing
     testImplementation(libs.kotlin.annotation.processing)
     testImplementation(libs.kotlin.compiler)
     testImplementation(libs.kotlin.serialization)
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    constraints {
+        implementation("commons-codec:commons-codec") {
+            version {
+                strictly("[1.13, 2[")
+                prefer("1.16.0")
+            }
+            because("Cxeb68d52e-5509: Apache commons-codec before 1.13 is vulnerable to information exposure. https://devhub.checkmarx.com/cve-details/Cxeb68d52e-5509/")
+        }
+    }
 }
 
 tasks {

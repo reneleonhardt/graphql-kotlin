@@ -11,6 +11,8 @@ dependencies {
     implementation(libs.slf4j)
     testImplementation(libs.rxjava)
     testImplementation(libs.junit.params)
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks {

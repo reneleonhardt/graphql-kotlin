@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
     api(libs.graphql.java)
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks {

@@ -9,6 +9,8 @@ dependencies {
     api(projects.graphqlKotlinClient)
     api(libs.kotlinx.coroutines.core)
     api(libs.kotlinx.serialization.json)
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks {

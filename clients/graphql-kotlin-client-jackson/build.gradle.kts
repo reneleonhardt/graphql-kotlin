@@ -7,6 +7,8 @@ plugins {
 dependencies {
     api(projects.graphqlKotlinClient)
     api(libs.jackson)
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks {
